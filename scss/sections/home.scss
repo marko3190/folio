@@ -1,0 +1,155 @@
+@import "../variables";
+@import "../mixins";
+
+.home-page {
+
+  &.intro {
+    .stage {
+      position: absolute;
+      animation: introStage 2s forwards;
+
+      .project-container {
+        visibility: hidden;
+        transition: none;
+        animation: introProjectContainer 2s forwards;
+        animation-delay: .9s;
+      }
+
+      @for $i from 1 through 4 {
+        li:nth-child(#{$i}) .project-container {
+          animation-delay: 1s - ($i / 10);
+        }
+      }
+    }
+  }
+
+  .stage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 5vw 5vw calc(7.5vw + 67px) 0;
+    transform-style: preserve-3d;
+    opacity: 1;
+    transition: opacity 1s;
+  }
+
+  .stage-perspective {
+    position: relative;
+    width: 100%;
+    perspective: 100vw;
+
+    &.parallax-perspective {
+      will-change: perspective-origin;
+    }
+  }
+
+  .projects {
+    position: relative;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    text-align: right;
+    width: 95%;
+    transform-style: preserve-3d;
+
+    li {
+      cursor: pointer;
+      transform-style: preserve-3d;
+
+      .project-container {
+        transform: rotateY(-45deg) translateZ(0) scale(1);
+        transform-origin: right center;
+        transform-style: preserve-3d;
+        will-change: transform;
+
+        @include md {
+          transition: transform 1.5s cubic-bezier(.075,.82,.165,1);
+        }
+      }
+
+      a {
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        color: #000;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-style: normal;
+        font-stretch: normal;
+        font-size: 9.6vw;
+        letter-spacing: .02em;
+        line-height: .9em;
+        transition: color .5s,opacity .5s;
+        -webkit-text-stroke: 3px #000;
+
+        &:before {
+          content: attr(data-info);
+          white-space: pre;
+          position: absolute;
+          top: 3.7em;
+          left: -250px;
+          width: 200px;
+          text-align: right;
+          font-size: .7vw;
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 1em;
+          color: #000 !important;
+          -webkit-text-stroke: transparent;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: .23em;
+          left: -.3em;
+          width: 2px;
+          height: .85em;
+          background-color: #000;
+          transform: rotate(25deg);
+          pointer-events: none;
+        }
+      }
+
+      &:hover {
+        .project-container {
+          transform: rotateY(-35deg) translateZ(0) scale(1);
+          transition-duration: 1s;
+
+          a {
+            color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes introStage {
+  0% {
+    transform: translate3d(0, -110%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes introProjectContainer {
+  0% {
+    visibility: visible;
+    opacity: 0;
+    transform: rotate3d(0, 1, 0, -100deg) translateZ(0) scale(1);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate3d(0, 1, 0, -45deg) translateZ(0) scale(1);
+  }
+}

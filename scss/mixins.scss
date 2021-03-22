@@ -1,0 +1,13 @@
+@import "variables";
+
+@mixin sm {
+  @media (min-width: $screen-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $screen-md) {
+    @content;
+  }
+}

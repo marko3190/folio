@@ -1,0 +1,88 @@
+body:not(.about-show) {
+  .about {
+    pointer-events: none;
+
+    .about-wrapper {
+      transform: translate3d(0,30px,0);
+    }
+  }
+
+  &.about-hiding {
+    .stage-perspective {
+      opacity: .1;
+    }
+  }
+}
+
+body.about-show {
+  .about {
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(.23,1,.32,1);
+    opacity: 1;
+
+    @include md {
+      transition-delay: .4s;
+    }
+
+    .btn-back {
+      transform: translateX(0);
+      transition-delay: .5s;
+    }
+  }
+
+  .contact,
+  .right {
+    transition: opacity .2s ease-in-out;
+    opacity: 0;
+  }
+
+  .about-wrapper {
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(.23,1,.32,1);
+
+    @include md {
+      transition-delay: .25s;
+    }
+  }
+
+  .stage-perspective {
+    opacity: .1;
+  }
+}
+
+.about {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .5s 0s;
+
+  @include md {
+    transition-delay: .25s;
+  }
+
+  .about-wrapper {
+    width: 100%;
+    max-width: calc(1440px + 10vw);
+    height: calc(100vh - (106px + 15vh));
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: calc(106px + 15vh) auto calc(107px + 5vh);
+    padding-left: 5vw;
+    padding-right: 5vw;
+    transform: translateZ(0);
+    transition: transform .5s cubic-bezier(.755,.05,.855,.06) 0s;
+    color: #fff;
+
+    @include md {
+      transition-delay: .25s;
+    }
+
+    .container {
+      max-width: 100%;
+    }
+  }
+}

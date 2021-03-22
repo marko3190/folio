@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: background-color .5s;
+
+  &.blue-mode {
+    background-color: $blue-mode;
+
+    header {
+      color: $blue-mode-header-color;
+
+      .logo {
+        -webkit-text-stroke: 1px #fff;
+        text-stroke: 1px #fff;
+
+        &:hover {
+          color: $blue-mode;
+        }
+
+        .slide-up {
+          display: block;
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+
+          span {
+            display: block;
+            transform: translateY(120%);
+            animation: logoAnimate 1s forwards;
+            animation-delay: 2s;
+          }
+        }
+      }
+    }
+
+    .mask {
+      background-color: #4801ff;
+    }
+  }
+
+  .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s,background-color .5s;
+    background-color: #f2f2f2;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+
+@keyframes logoAnimate {
+  0% {
+    transform: translateY(120%)
+  }
+
+  to {
+    transform: translateY(0)
+  }
+}
+
+@keyframes showUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50%)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes scaleSlideDownscaleSlideUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  5% {
+    transform: translateY(0) scale(0.75);
+    opacity: 1;
+  }
+  24.99% {
+    transform: translateY(50%) scale(0.75);
+    opacity: 0;
+  }
+  25% {
+    transform: translateY(-50%) scale(0.75);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  40% {
+    transform: translateY(0) scale(0.75);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Level</title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="scss/styles.css">
+</head>
+<body class="home-page blue-mode">
+    <header>
+        <a class="logo">
+            <span class="slide-up">
+                <span>Logo</span>
+            </span>
+        </a>
+        <div class="info">
+            <div class="left">
+                <div class="contact">
+                    <ul>
+                        <li>xxx</li>
+                        <li>xxx</li>
+                    </ul>
+                    <ul>
+                        <li>xxx</li>
+                        <li class="email">
+                            <a><strong>mail@mail.com</strong></a>
+                        </li>
+                    </ul>
+                </div>
+                <nav class="links">
+                    <ul>
+                        <li class="about-li">
+                            <button class="link" aria-label="About">
+                                <span>01</span> <strong>about</strong>
+                            </button>
+                        </li>
+                        <li class="journal-li">
+                            <a href=""><span>02</span> <strong>contact</strong></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right">
+                <nav class="social">
+                    <ul>
+                        <li>
+                            <a class="no-barba" href="" target="_blank" rel="noopener">
+                                <span>03</span> <strong>twitter</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="no-barba" href="" target="_blank" rel="noopener">
+                                <span>04</span> <strong>instagram</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="no-barba" href="" target="_blank" rel="noopener"><span>05</span> <strong>linkedin</strong></a>
+                        </li>
+                    </ul></nav>
+                <div class="credits">
+                    <div class="label">design</div>
+                    <div class="credit-link">
+                        <a class="no-barba" href="" target="_blank" rel="noopener"><strong>feint</strong></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mask"></div>
+    <section class="about">
+        <button class="btn-back" type="button" aria-label="Back"><span class="btn-box"><span
+                class="icon-close"></span></span></button>
+        <div class="about-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <h1>
+                            Specializing in refined digital web experiences with a focus on animated, responsive, and interactive content.
+                        </h1>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        2
+                    </div>
+                    <div class="col-12 col-md-3">
+                        3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="barba-wrapper">
+        <div class="barba-container">
+            <div class="stage-perspective parallax-perspective perspective-origin-tt-bb">
+                <div class="stageContainer">
+                    <main class="stage">
+                        <ul class="projects">
+                            <li class="projects-li" data-barba="HomeTransition">
+                                <div class="project-container">
+                                    <a href="project1.html"
+                                       data-info="2018"
+                                       data-barba="HomeTransition">Studio<br>Mega
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="projects-li" data-barba="HomeTransition">
+                                <div class="project-container">
+                                    <a href="project1.html"
+                                       data-info="2018"
+                                       data-barba="HomeTransition">Studio<br>Mega
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="projects-li" data-barba="HomeTransition">
+                                <div class="project-container">
+                                    <a href="project1.html"
+                                       data-info="2018"
+                                       data-barba="HomeTransition">Studio<br>Mega
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="projects-li" data-barba="HomeTransition">
+                                <div class="project-container">
+                                    <a href="project1.html"
+                                       data-info="2018"
+                                       data-barba="HomeTransition">Studio<br>Mega
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script>
+    <script>
+    window.addEventListener("load", function () {
+        var navAbout = document.querySelector(".about-li button.link");
+        var aboutContainer = document.querySelector(".about .container");
+        var aboutBack = document.querySelector(".about .btn-back");
+        var documentBody = document.body;
+        var stage = document.querySelector(".stage");
+
+        navAbout.addEventListener("click", function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            aboutContainer.scrollTop = 0;
+            documentBody.classList.remove("mobileNavOpen");
+            documentBody.classList.add("nav-top");
+            documentBody.classList.add("about-show");
+        });
+        aboutBack.addEventListener("click", function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            documentBody.classList.add("about-hiding");
+            documentBody.classList.remove("about-show");
+            documentBody.classList.remove("nav-top");
+
+            setTimeout(function () {
+                documentBody.classList.remove('about-hiding')
+            }, 1000);
+        });
+
+        window.addEventListener("scroll", () => {
+        });
+
+        documentBody.classList.add('intro');
+
+        setTimeout(function () {
+           documentBody.classList.remove('intro')
+        }, 2600);
+
+        Barba.Pjax.start();
+
+        function lerp(t, e, i) {
+            return (1 - i) * t + i * e
+        }
+    });
+</script>
+</body>
+</html>
